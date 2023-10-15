@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://bb1acs60b11yl"]
+
+[ext_resource type="Texture2D" uid="uid://b3mgsell0c3o1" path="res://enemy/スライム/スライムA_移動000.png" id="1_csmil"]
+[ext_resource type="Script" path="res://mob.gd" id="1_df8vi"]
+[ext_resource type="Texture2D" uid="uid://dgnuq0vy7tnnv" path="res://enemy/スライム/スライムA_移動001.png" id="2_g1xeo"]
+[ext_resource type="Texture2D" uid="uid://bgd8pvyyml8pa" path="res://enemy/スライム/スライムA_移動002.png" id="3_mt7yq"]
+[ext_resource type="Texture2D" uid="uid://c28jey8lhmeor" path="res://enemy/スライム/スライムA_移動003.png" id="4_y7e6q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vthmu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_csmil")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_g1xeo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mt7yq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y7e6q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e4rk5"]
+radius = 33.0151
+
+[node name="Mob" type="RigidBody2D" groups=["mobs"]]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_df8vi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vthmu")
+frame_progress = 0.671555
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e4rk5")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
